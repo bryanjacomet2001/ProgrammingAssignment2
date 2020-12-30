@@ -1,8 +1,8 @@
 makeCacheMatrix <- function(x = matrix(sample(1:100,9),3,3)) {
-  s <- NULL
+  d <- NULL
   set <- function(y) {
     x <<- y
-    s <<- NULL
+    d <<- NULL
   }
   get <- function() x
   setsolve <- function(solve) s <<- solve
@@ -13,13 +13,13 @@ makeCacheMatrix <- function(x = matrix(sample(1:100,9),3,3)) {
 }
 
 cacheSolve <- function(x, ...) {
-  s <- x$getsolve()
-  if(!is.null(s)) {
+  d <- x$getsolve()
+  if(!is.null(d)) {
     message("getting inversed matrix")
-    return(s)
+    return(d)
   }
   data <- x$get()
-  s <- solve(data, ...)
-  x$setsolve(s)
-  s
+  d<- solve(data, ...)
+  x$setsolve(d)
+  d
 }
